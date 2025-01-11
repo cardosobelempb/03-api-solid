@@ -13,6 +13,7 @@ GymPass style app.
 - npm install fastify -S
 - npm install dotenv -S
 - npm install zod -S
+- npm install bcryptjs -S
 - npm install @fastify/cookie
 - npm i pg
 
@@ -22,6 +23,7 @@ GymPass style app.
 - npm i tsx -D
 - npm i tsup -D
 - npm i @types/node -D
+- npm install @types/bcryptjs -D
 - npm i eslint @rocketseat/eslint-config -D
 
 ## comado Typescript
