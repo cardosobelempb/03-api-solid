@@ -34,6 +34,7 @@ GymPass style app.
 - npx prisma init
 - npm i @prisma/client -S
 - npx prisma generate
+- npx prisma migrate dev
 
 ## Database
 
