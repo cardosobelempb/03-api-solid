@@ -4,6 +4,7 @@
   ],
   "rules": {
     "camelcase": "off",
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-namespace": "off",
+    "no-useless-constructor": "off"
   }
 }
