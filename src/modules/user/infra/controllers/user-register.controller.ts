@@ -2,6 +2,7 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { UserRegisterService } from '../../application/services/user-register.service'
 import { UserPrismaRepository } from '../../domain/repositories/prisma/user-prisma.repository'
 import { UserSchema } from '../schemas/user-register.schema'
+import { FindByEmailError } from '@/core/application/errors/findby-email.error'
 
 export async function userRegister(
   request: FastifyRequest,
@@ -17,7 +18,9 @@ export async function userRegister(
       password,
     })
   } catch (error) {
-    return reply.status(409).send()
+    if (error instanceof FindByEmailError) {
+      return reply.status(409).send({ message: error.message })
+    }
   }
 
   return reply.status(201).send()

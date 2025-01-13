@@ -1,6 +1,7 @@
 import { hash } from 'bcryptjs'
 import { UserPrismaRepository } from '../../domain/repositories/prisma/user-prisma.repository'
 import { UserRequest } from '../request/user-register.request'
+import { FindByEmailError } from '@/core/application/errors/findby-email.error'
 
 export class UserRegisterService {
   constructor(private readonly userRepository: UserPrismaRepository) {}
@@ -11,7 +12,7 @@ export class UserRegisterService {
     const userWithSameEmail = await this.userRepository.findByEmail(email)
 
     if (userWithSameEmail) {
-      throw new Error('E-mail already exists.')
+      throw new FindByEmailError()
     }
 
     await this.userRepository.create({ name, email, password_hash })
