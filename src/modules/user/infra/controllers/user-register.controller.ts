@@ -21,6 +21,7 @@ export async function userRegister(
     if (error instanceof FindByEmailError) {
       return reply.status(409).send({ message: error.message })
     }
+    return error
   }
 
   return reply.status(201).send()
