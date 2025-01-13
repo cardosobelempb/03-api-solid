@@ -15,7 +15,6 @@ GymPass style app.
 - npm install zod -S
 - npm install bcryptjs -S
 - npm install @fastify/cookie
-- npm i pg
 
 ## Dev Dependencies
 
@@ -46,16 +45,18 @@ GymPass style app.
 ## Test
 
 - npm i vitest -D
+- npm i vite-tsconfig-paths -D
 - npm i supertest -D
-- npm i --save-dev @types/supertest
+- npm i @types/supertest -D
 
-## comado knex
+## scripts
 
-- npm run knex -- -h
-- npm run knex -- migrate:make create-transactions
-- npm run knex -- migrate:make add-session-id-to-transactions
-- npm run knex -- migrate:latest
-- npm run knex -- migrate:rollback
+- "test": "vitest run"
+- "test:watch": "vitest"
+- "build": "tsup src --out-dir build",
+- "start:dev": "tsx watch src/server.ts",
+- "start": "node build/server.js",
+- "lint": "eslint src --ext .ts --fix"
 
 ## comado git
 
