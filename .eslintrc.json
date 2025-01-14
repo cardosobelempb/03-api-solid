@@ -5,6 +5,7 @@
   "rules": {
     "camelcase": "off",
     "@typescript-eslint/no-namespace": "off",
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "prettier/prettier": ["error", { "printWidth": 80 }]
   }
 }

@@ -1,13 +1,18 @@
-import { hash } from 'bcryptjs'
+import bcryptjs from 'bcryptjs'
 import { UserPrismaRepository } from '../../domain/repositories/prisma/user-prisma.repository'
 import { UserRequest } from '../request/user-register.request'
 import { FindByEmailError } from '@/core/application/errors/findby-email.error'
+import { UserReply } from '../replys/user.reply'
 
 export class UserRegisterService {
   constructor(private readonly userRepository: UserPrismaRepository) {}
 
-  async execute({ name, email, password }: UserRequest.Register) {
-    const password_hash = await hash(password, 6)
+  async execute({
+    name,
+    email,
+    password,
+  }: UserRequest.Register): Promise<UserReply.Register> {
+    const password_hash = await bcryptjs.hash(password, 6)
 
     const userWithSameEmail = await this.userRepository.findByEmail(email)
 
@@ -15,6 +20,11 @@ export class UserRegisterService {
       throw new FindByEmailError()
     }
 
-    await this.userRepository.create({ name, email, password_hash })
+    const user = await this.userRepository.create({
+      name,
+      email,
+      password_hash,
+    })
+    return { user }
   }
 }
