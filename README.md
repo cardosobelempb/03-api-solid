@@ -48,6 +48,7 @@ GymPass style app.
 - npm i vite-tsconfig-paths -D
 - npm i supertest -D
 - npm i @types/supertest -D
+- npm i @vitest/ui -D
 
 ## scripts
 
