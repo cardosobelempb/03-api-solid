@@ -1,8 +1,10 @@
+import { FindByEmailError } from '@/core/application/errors/findby-email.error'
+import { UserInMenoryRepository } from '@/modules/user/domain/repositories/in-memory/user-in-memory.repository'
 import bcryptjs from 'bcryptjs'
 import { describe, expect, it } from 'vitest'
-import { UserRegisterService } from '../user-register.service'
-import { UserInMenoryRepository } from '@/core/domain/repositories/user-in-memory.repository'
-import { FindByEmailError } from '@/core/application/errors/findby-email.error'
+
+import { UserRegisterService } from './user-register.service'
+
 describe('User registration service', () => {
   it('should be able to regitration', async () => {
     const userRepository = new UserInMenoryRepository()
@@ -44,7 +46,7 @@ describe('User registration service', () => {
       password: '123456',
     })
 
-    expect(() =>
+    await expect(() =>
       useRegisterService.execute({
         name: 'John Doe',
         email,

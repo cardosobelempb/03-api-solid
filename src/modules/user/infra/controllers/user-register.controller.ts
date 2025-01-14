@@ -1,8 +1,9 @@
+import { FindByEmailError } from '@/core/application/errors/findby-email.error'
 import { FastifyReply, FastifyRequest } from 'fastify'
+
 import { UserRegisterService } from '../../application/services/user-register.service'
 import { UserPrismaRepository } from '../../domain/repositories/prisma/user-prisma.repository'
 import { UserSchema } from '../schemas/user-register.schema'
-import { FindByEmailError } from '@/core/application/errors/findby-email.error'
 
 export async function userRegister(
   request: FastifyRequest,
