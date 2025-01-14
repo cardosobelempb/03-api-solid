@@ -4,4 +4,9 @@ export namespace UserRequest {
     email: string
     password: string
   }
+
+  export interface Authenticate {
+    email: string
+    password: string
+  }
 }

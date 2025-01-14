@@ -6,4 +6,9 @@ export namespace UserSchema {
     email: z.string().email(),
     password: z.string().min(6),
   })
+
+  export const authenticate = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+  })
 }

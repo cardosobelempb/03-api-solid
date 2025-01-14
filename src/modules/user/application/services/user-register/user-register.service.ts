@@ -2,8 +2,8 @@ import { FindByEmailError } from '@/core/application/errors/findby-email.error'
 import { UserPrismaRepository } from '@/modules/user/domain/repositories/prisma/user-prisma.repository'
 import bcryptjs from 'bcryptjs'
 
-import { UserReply } from '../replys/user.reply'
-import { UserRequest } from '../request/user-register.request'
+import { UserReply } from '../../replys/user.reply'
+import { UserRequest } from '../../request/user-register.request'
 
 export class UserRegisterService {
   constructor(private readonly userRepository: UserPrismaRepository) {}
