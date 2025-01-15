@@ -1,7 +1,7 @@
 import { FindByEmailError } from '@/core/application/errors/findby-email.error'
-import { UserRegisterService } from '@/modules/user/application/services/user-register/user-register.service'
-import { UserPrismaRepository } from '@/modules/user/domain/repositories/prisma/user-prisma.repository'
+import { userRegisterMake } from '@/modules/user/application/services/user-register/user-register.make'
 import { FastifyReply, FastifyRequest } from 'fastify'
+
 import { UserSchema } from '../../schemas/user.schema'
 
 export async function userRegister(
@@ -10,9 +10,9 @@ export async function userRegister(
 ) {
   const { name, email, password } = UserSchema.register.parse(request.body)
   try {
-    const userRepsitory = new UserPrismaRepository()
-    const userRegister = new UserRegisterService(userRepsitory)
-    await userRegister.execute({
+    const userRegisterService = userRegisterMake()
+
+    await userRegisterService.execute({
       name,
       email,
       password,

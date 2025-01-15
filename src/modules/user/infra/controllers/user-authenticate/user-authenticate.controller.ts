@@ -1,7 +1,7 @@
 import { InvalidCredentialsError } from '@/core/application/errors/invalid-credentials.erro'
-import { UserAuthenticateService } from '@/modules/user/application/services/user-authenticate/user-authenticate.service'
-import { UserPrismaRepository } from '@/modules/user/domain/repositories/prisma/user-prisma.repository'
+import { userAuthenticateMake } from '@/modules/user/application/services/user-authenticate/user-authenticate.make'
 import { FastifyReply, FastifyRequest } from 'fastify'
+
 import { UserSchema } from '../../schemas/user.schema'
 
 export async function userAuthenticateController(
@@ -10,8 +10,7 @@ export async function userAuthenticateController(
 ) {
   const { email, password } = UserSchema.authenticate.parse(request.body)
   try {
-    const userRepsitory = new UserPrismaRepository()
-    const userAuthenticateService = new UserAuthenticateService(userRepsitory)
+    const userAuthenticateService = userAuthenticateMake()
     await userAuthenticateService.execute({
       email,
       password,
