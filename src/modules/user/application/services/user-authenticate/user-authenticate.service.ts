@@ -3,9 +3,9 @@ import { UserPrismaRepository } from '@/modules/user/domain/repositories/prisma/
 import bcryptjs from 'bcryptjs'
 
 import { UserReply } from '../../replys/user.reply'
-import { UserRequest } from '../../request/user-register.request'
+import { UserRequest } from '../../request/user.request'
 
-export class UserAuthenticationService {
+export class UserAuthenticateService {
   constructor(private userRepository: UserPrismaRepository) {}
 
   async execute({
