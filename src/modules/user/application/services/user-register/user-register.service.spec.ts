@@ -1,17 +1,21 @@
 import { FindByEmailError } from '@/core/application/errors/findby-email.error'
 import { UserInMenoryRepository } from '@/modules/user/domain/repositories/in-memory/user-in-memory.repository'
 import bcryptjs from 'bcryptjs'
-import { describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { UserRegisterService } from './user-register.service'
 
+let userRepository: UserInMenoryRepository
+let sut: UserRegisterService
 describe('User registration service', () => {
+  beforeEach(() => {
+    userRepository = new UserInMenoryRepository()
+    sut = new UserRegisterService(userRepository)
+  })
   it('should be able to regitration', async () => {
-    const userRepository = new UserInMenoryRepository()
-    const useRegisterService = new UserRegisterService(userRepository)
     const email = 'johndoe@example.com'
 
-    const { user } = await useRegisterService.execute({
+    const { user } = await sut.execute({
       name: 'John Doe',
       email,
       password: '123456',
@@ -20,10 +24,7 @@ describe('User registration service', () => {
     expect(user.id).toEqual(expect.any(String))
   })
   it('should hash user password upon regitration', async () => {
-    const userRepository = new UserInMenoryRepository()
-    const useRegisterService = new UserRegisterService(userRepository)
-
-    const { user } = await useRegisterService.execute({
+    const { user } = await sut.execute({
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
@@ -36,18 +37,16 @@ describe('User registration service', () => {
   })
 
   it('should not be able to regitration with same email twice', async () => {
-    const userRepository = new UserInMenoryRepository()
-    const useRegisterService = new UserRegisterService(userRepository)
     const email = 'johndoe@example.com'
 
-    await useRegisterService.execute({
+    await sut.execute({
       name: 'John Doe',
       email,
       password: '123456',
     })
 
     await expect(() =>
-      useRegisterService.execute({
+      sut.execute({
         name: 'John Doe',
         email,
         password: '123456',
