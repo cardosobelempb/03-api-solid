@@ -32,7 +32,7 @@ describe('User authenticate service', () => {
   it('should not be able to authenticate with wrong email', async () => {
     const email = 'johndoe@example.com'
 
-    expect(() =>
+    await expect(() =>
       sut.execute({
         email,
         password: '123456',

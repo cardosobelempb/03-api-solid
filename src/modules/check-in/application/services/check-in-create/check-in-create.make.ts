@@ -1,6 +1,6 @@
-import { CheckInPrismaRepository } from '@/modules/checkin/domain/repositories/prisma/checkin-prisma.repository'
+import { CheckInPrismaRepository } from '@/modules/check-in/domain/repositories/prisma/check-in-prisma.repository'
 
-import { CheckInCreateService } from './checkin-create.service'
+import { CheckInCreateService } from './check-in-create.service'
 
 export function checkInCreateMake() {
   const checkInRepository = new CheckInPrismaRepository()

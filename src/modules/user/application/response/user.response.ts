@@ -1,7 +1,7 @@
 import { User } from '@prisma/client'
 
-export namespace UserReply {
-  export interface Reply {
+export namespace UserResponse {
+  export interface Response {
     user: User
   }
   export interface Register {

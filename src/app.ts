@@ -1,5 +1,5 @@
 import fastify from 'fastify'
-import { userRoutes } from './modules/user/infra/userRoutes'
+import { userRoutes } from './modules/user/infra/user.routes'
 import { ZodError } from 'zod'
 import { env } from './core/infra/env'
 

@@ -1,7 +1,7 @@
 import { CheckIn, Prisma } from '@prisma/client'
 import { randomUUID } from 'node:crypto'
 
-import { CheckInRepository } from '../checkin-repository.abstract'
+import { CheckInRepository } from '../check-in-repository.abstract'
 
 export class CheckInInMenoryRepository implements CheckInRepository {
   public items: CheckIn[] = []
@@ -11,7 +11,7 @@ export class CheckInInMenoryRepository implements CheckInRepository {
       id: randomUUID(),
       user_id: data.user_id,
       gym_id: data.gym_id,
-      validated_at: new Date(),
+      validated_at: data.validated_at ? new Date(data.validated_at) : null,
       created_at: new Date(),
     }
     this.items.push(checkIn)

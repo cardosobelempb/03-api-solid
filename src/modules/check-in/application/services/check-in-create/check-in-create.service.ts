@@ -1,7 +1,7 @@
-import { CheckInPrismaRepository } from '@/modules/checkin/domain/repositories/prisma/checkin-prisma.repository'
+import { CheckInPrismaRepository } from '@/modules/check-in/domain/repositories/prisma/check-in-prisma.repository'
 
-import { CheckinRequest } from '../../request/checkin.request'
-import { CheckinResponse } from '../../response/checkin.response'
+import { CheckInRequest } from '../../request/check-in.request'
+import { CheckInResponse } from '../../response/check-in.response'
 
 export class CheckInCreateService {
   constructor(private readonly checkInRepository: CheckInPrismaRepository) {}
@@ -9,7 +9,7 @@ export class CheckInCreateService {
   async execute({
     userId,
     gymId,
-  }: CheckinRequest.Create): Promise<CheckinResponse.Create> {
+  }: CheckInRequest.Create): Promise<CheckInResponse.Create> {
     const checkIn = await this.checkInRepository.create({
       user_id: userId,
       gym_id: gymId,

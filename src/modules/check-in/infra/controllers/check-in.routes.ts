@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify'
 
-export async function checkinRoutes(app: FastifyInstance) {
+export async function checkInRoutes(app: FastifyInstance) {
   app.post('/checkins')
 }

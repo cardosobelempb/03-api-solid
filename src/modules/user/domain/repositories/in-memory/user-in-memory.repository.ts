@@ -5,6 +5,14 @@ import { randomUUID } from 'node:crypto'
 export class UserInMenoryRepository implements userRepository {
   public items: User[] = []
 
+  findById(id: string): Promise<User | null> {
+    const user = this.items.find(item => item.id === id)
+    if (!user) {
+      return null
+    }
+    return user
+  }
+
   async findByEmail(email: string): Promise<User | null> {
     const user = this.items.find(item => item.email === email)
 

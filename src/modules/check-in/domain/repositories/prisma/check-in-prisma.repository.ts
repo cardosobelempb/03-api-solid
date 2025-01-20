@@ -1,7 +1,7 @@
 import { prisma } from '@/core/infra/lib/prisma'
 import { CheckIn, Prisma } from '@prisma/client'
 
-import { CheckInRepository } from '../checkin-repository.abstract'
+import { CheckInRepository } from '../check-in-repository.abstract'
 
 export class CheckInPrismaRepository implements CheckInRepository {
   async create(data: Prisma.CheckInUncheckedCreateInput): Promise<CheckIn> {

@@ -9,4 +9,8 @@ export namespace UserRequest {
     email: string
     password: string
   }
+
+  export interface Profile {
+    userId: string
+  }
 }
