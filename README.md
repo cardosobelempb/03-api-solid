@@ -14,6 +14,7 @@ GymPass style app.
 - npm install dotenv -S
 - npm install zod -S
 - npm install bcryptjs -S
+- npm install dayjs -S
 - npm install @fastify/cookie
 
 ## Dev Dependencies
