@@ -17,4 +17,12 @@ export class GymPrismaRepoitory implements GymRepository {
     })
     return gym
   }
+
+  async search(query: string, page: number): Promise<Gym[]> {
+    return await prisma.gym.findMany({
+      where: { title: query },
+      take: (page - 1) * 20,
+      skip: page * 20,
+    })
+  }
 }

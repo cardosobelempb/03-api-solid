@@ -6,4 +6,9 @@ export namespace GymRequest {
     latitude: number
     longitude: number
   }
+
+  export interface Search {
+    query: string
+    page: number
+  }
 }
