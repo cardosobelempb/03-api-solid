@@ -1,19 +1,22 @@
+import { ResourceNotFoundError } from '@/core/application/errors/resource-not-found.erro'
+import { getDistanceBetweenCoordinates } from '@/core/utils/get-distance-between-coodinates'
 import { CheckInPrismaRepository } from '@/modules/check-in/domain/repositories/prisma/check-in-prisma.repository'
+import { GymPrismaRepoitory } from '@/modules/gym/domain/repositories/prisma-repository/gym-prisma.repository'
 
 import { CheckInRequest } from '../../request/check-in.request'
 import { CheckInResponse } from '../../response/check-in.response'
-import { GymRepository } from '@/modules/gym/domain/repositories/gym-repository.abstract'
-import { ResourceNotFoundError } from '@/core/application/errors/resource-not-found.erro'
 
 export class CheckInCreateService {
   constructor(
     private readonly checkInRepository: CheckInPrismaRepository,
-    private readonly gymRepository: GymRepository,
+    private readonly gymRepository: GymPrismaRepoitory,
   ) {}
 
   async execute({
     userId,
     gymId,
+    userLatitude,
+    userLongitude,
   }: CheckInRequest.Create): Promise<CheckInResponse.Create> {
     const gym = await this.gymRepository.findById(gymId)
 
@@ -22,6 +25,19 @@ export class CheckInCreateService {
     }
 
     // calcular distancia between user and gym
+    const distance = getDistanceBetweenCoordinates(
+      { latitude: userLatitude, longitude: userLongitude },
+      {
+        latitude: gym.latitude.toNumber(),
+        longitude: gym.longitude.toNumber(),
+      },
+    )
+
+    const MAX_DISTANCE_IN_KILOMETERS = 0.1
+
+    if (distance > MAX_DISTANCE_IN_KILOMETERS) {
+      throw new Error()
+    }
 
     const checkInOnSameDay = await this.checkInRepository.findByUserOnDate(
       userId,

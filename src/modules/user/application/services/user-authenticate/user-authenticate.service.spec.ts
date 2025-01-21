@@ -1,8 +1,8 @@
+import { InvalidCredentialsError } from '@/core/application/errors/invalid-credentials.erro'
 import { UserInMenoryRepository } from '@/modules/user/domain/repositories/in-memory/user-in-memory.repository'
 import bcryptjs from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { InvalidCredentialsError } from '@/core/application/errors/invalid-credentials.erro'
 import { UserAuthenticateService } from './user-authenticate.service'
 
 let userRepository: UserInMenoryRepository
@@ -49,7 +49,7 @@ describe('User authenticate service', () => {
       password_hash: await bcryptjs.hash('123456', 6),
     })
 
-    expect(() =>
+    await expect(() =>
       sut.execute({
         email,
         password: '123123',
