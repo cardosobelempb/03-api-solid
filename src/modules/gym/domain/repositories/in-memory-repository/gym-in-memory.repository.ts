@@ -1,4 +1,5 @@
 import { Gym, Prisma } from '@prisma/client'
+import { Decimal } from '@prisma/client/runtime/library'
 import { randomUUID } from 'node:crypto'
 
 import { GymRepository } from '../gym-repository.abstract'
@@ -16,14 +17,14 @@ export class GymInMemoryRepoitory implements GymRepository {
     return gym
   }
 
-  async create(data: Prisma.GymUncheckedCreateInput): Promise<Gym> {
+  async create(data: Prisma.GymCreateInput): Promise<Gym> {
     const gym = {
-      id: randomUUID(),
+      id: data.id ?? randomUUID(),
       title: data.title,
-      description: data.description,
-      phone: data.phone,
-      latitude: data.latitude,
-      longitude: data.longitude,
+      description: data.description ?? null,
+      phone: data.phone ?? null,
+      latitude: new Decimal(data.latitude.toString()),
+      longitude: new Decimal(data.longitude.toString()),
     }
     this.items.push(gym)
     return gym
