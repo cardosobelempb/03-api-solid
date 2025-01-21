@@ -16,4 +16,3 @@ export class CheckInHistoryUserService {
     }
   }
 }
-// g9 power

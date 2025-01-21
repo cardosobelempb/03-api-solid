@@ -86,11 +86,11 @@ GymPass style app.
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível obter o perfil de um usuário logado;
 - [] Deve ser possível obter o número de check-in realizados pelo usuário logado;
-- [] Deve ser possível o usuário obter seu histórico de check-in;
+- [x] Deve ser possível o usuário obter seu histórico de check-in;
 - [] Deve ser possível o usuário buscar academias pelo nome;
 - [x] Deve ser possível o usuário realizar check-in em uma academia;
 - [] Deve ser possível validar o check-in de um usuário;
-- [] Deve ser possível cadastrar um academia;
+- [x] Deve ser possível cadastrar um academia;
 
 - ​​The IT Crowd
 - Mr Robot
@@ -98,8 +98,8 @@ GymPass style app.
 ## RNs (Regras de negócio)
 
 - [x] o usuário não deve poder cadastrar com um e-mail duplicado;
-- [] o usuário não deve poder fazer 2 check-in no mesmp dia;
-- [] o usuário não deve poder fazer check-in se não estiver perto (100m) da academia;
+- [x] o usuário não deve poder fazer 2 check-in no mesmp dia;
+- [x] o usuário não deve poder fazer check-in se não estiver perto (100m) da academia;
 - [] o check-in só pode ser validado até 20 minutos após criado;
 - [] o check-in só pode ser validado por adminitradores;
 - [] o academia só pode ser cadastrar por adminitradores;
@@ -108,5 +108,5 @@ GymPass style app.
 
 - [x] a senha do usuário precisa estar criptografada;
 - [x] os dados da aplicação precisa estar persistidos em um banco Postgress SQL;
-- [] todas listas de dados deve estar paginados com 20 itens por páginas;
+- [x] todas listas de dados deve estar paginados com 20 itens por páginas;
 - [] o usuário deve ser indentificado por um JWT (Json Web Token);
