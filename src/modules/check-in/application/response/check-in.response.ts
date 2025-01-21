@@ -8,4 +8,8 @@ export namespace CheckInResponse {
   export interface Many {
     checkIns: CheckIn[]
   }
+
+  export interface Count {
+    checkInUserIdCount: number
+  }
 }

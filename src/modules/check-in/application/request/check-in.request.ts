@@ -6,7 +6,7 @@ export namespace CheckInRequest {
     userLongitude: number
   }
 
-  export interface GetUserId {
+  export interface UserId {
     userId: string
   }
 
