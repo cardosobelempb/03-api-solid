@@ -1,11 +1,11 @@
 import { CheckIn } from '@prisma/client'
 
 export namespace CheckInResponse {
-  export interface Get {
+  export interface Find {
     checkIn: CheckIn
   }
 
-  export interface Many {
+  export interface FindAll {
     checkIns: CheckIn[]
   }
 

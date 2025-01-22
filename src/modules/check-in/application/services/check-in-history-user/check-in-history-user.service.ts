@@ -8,7 +8,7 @@ export class CheckInHistoryUserService {
   async execute({
     userId,
     page,
-  }: CheckInRequest.Pagination): Promise<CheckInResponse.Many> {
+  }: CheckInRequest.Pagination): Promise<CheckInResponse.FindAll> {
     const checkIns = await this.checkInRepository.findManyByUserId(userId, page)
 
     return {

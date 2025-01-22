@@ -19,7 +19,7 @@ export class CheckInCreateService {
     gymId,
     userLatitude,
     userLongitude,
-  }: CheckInRequest.Request): Promise<CheckInResponse.Get> {
+  }: CheckInRequest.Request): Promise<CheckInResponse.Find> {
     const gym = await this.gymRepository.findById(gymId)
 
     if (!gym) {

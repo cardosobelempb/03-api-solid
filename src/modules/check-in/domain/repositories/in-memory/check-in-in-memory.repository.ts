@@ -45,4 +45,21 @@ export class CheckInInMenoryRepository implements CheckInRepository {
   async countByUserId(userId: string): Promise<number> {
     return this.items.filter(item => item.user_id === userId).length
   }
+
+  async save(checkIn: CheckIn): Promise<CheckIn> {
+    const ckeckInIndex = this.items.findIndex(item => item.id === checkIn.id)
+    if (ckeckInIndex >= 0) {
+      this.items[ckeckInIndex] = checkIn
+    }
+
+    return checkIn
+  }
+
+  async findById(id: string): Promise<CheckIn | null> {
+    const checkIn = this.items.find(item => item.id === id)
+    if (!checkIn) {
+      return null
+    }
+    return checkIn
+  }
 }

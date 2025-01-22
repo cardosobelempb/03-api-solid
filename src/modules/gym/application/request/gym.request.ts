@@ -7,6 +7,10 @@ export namespace GymRequest {
     longitude: number
   }
 
+  export interface Id {
+    gymId: string
+  }
+
   export interface Search {
     query: string
     page: number

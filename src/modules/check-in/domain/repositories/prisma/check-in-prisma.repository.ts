@@ -34,4 +34,12 @@ export class CheckInPrismaRepository implements CheckInRepository {
       where: { user_id: userId },
     })
   }
+
+  async save(id: string): Promise<CheckIn> {
+    throw new Error('Method not implemented.')
+  }
+
+  async findById(id: string): Promise<CheckIn | null> {
+    throw new Error('Method not implemented.')
+  }
 }
