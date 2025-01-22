@@ -2,7 +2,7 @@ import { MaxDistanceError } from '@/core/application/errors/max-distance.error'
 import { MaxNumberOfCheckInError } from '@/core/application/errors/max-number-of-check-in.erro'
 import { ResourceNotFoundError } from '@/core/application/errors/resource-not-found.erro'
 import { getDistanceBetweenCoordinates } from '@/core/utils/get-distance-between-coodinates'
-import { CheckInPrismaRepository } from '@/modules/check-in/domain/repositories/prisma/check-in-prisma.repository'
+import { CheckInRepository } from '@/modules/check-in/domain/repositories/check-in-repository.abstract'
 import { GymPrismaRepoitory } from '@/modules/gym/domain/repositories/prisma-repository/gym-prisma.repository'
 
 import { CheckInRequest } from '../../request/check-in.request'
@@ -10,7 +10,7 @@ import { CheckInResponse } from '../../response/check-in.response'
 
 export class CheckInCreateService {
   constructor(
-    private readonly checkInRepository: CheckInPrismaRepository,
+    private readonly checkInRepository: CheckInRepository,
     private readonly gymRepository: GymPrismaRepoitory,
   ) {}
 

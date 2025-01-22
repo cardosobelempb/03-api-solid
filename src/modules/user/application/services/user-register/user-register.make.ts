@@ -5,6 +5,6 @@ import { UserRegisterService } from './user-register.service'
 export function userRegisterMake() {
   const userRepsitory = new UserPrismaRepository()
 
-  const userRegister = new UserRegisterService(userRepsitory)
-  return userRegister
+  const service = new UserRegisterService(userRepsitory)
+  return service
 }
