@@ -1,11 +1,11 @@
 import { Gym } from '@prisma/client'
 
 export namespace GymResponse {
-  export interface Response {
+  export interface Find {
     gym: Gym
   }
 
-  export interface Many {
+  export interface FindAll {
     gyms: Gym[]
   }
 }

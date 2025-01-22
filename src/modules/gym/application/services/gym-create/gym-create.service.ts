@@ -12,7 +12,7 @@ export class GymCreateService {
     phone,
     latitude,
     longitude,
-  }: GymRequest.Create): Promise<GymResponse.Response> {
+  }: GymRequest.Create): Promise<GymResponse.Find> {
     const gym = await this.gymRepository.create({
       title,
       description,

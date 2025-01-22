@@ -6,7 +6,10 @@ import { GymResponse } from '../../response/gym.response'
 export class GymSearchService {
   constructor(private readonly gymRepositpory: GymRepository) {}
 
-  async execute({ query, page }: GymRequest.Search): Promise<GymResponse.Many> {
+  async execute({
+    query,
+    page,
+  }: GymRequest.Search): Promise<GymResponse.FindAll> {
     const gyms = await this.gymRepositpory.search(query, page)
     return { gyms }
   }

@@ -11,4 +11,9 @@ export namespace GymRequest {
     query: string
     page: number
   }
+
+  export interface Location {
+    userLatitude: number
+    userLongitude: number
+  }
 }

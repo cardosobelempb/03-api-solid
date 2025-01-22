@@ -1,7 +1,7 @@
 import { prisma } from '@/core/infra/lib/prisma'
 import { Gym, Prisma } from '@prisma/client'
 
-import { GymRepository } from '../gym-repository.abstract'
+import { FindManyNearbyParams, GymRepository } from '../gym-repository.abstract'
 
 export class GymPrismaRepoitory implements GymRepository {
   async findById(id: string): Promise<Gym | null> {
@@ -9,6 +9,10 @@ export class GymPrismaRepoitory implements GymRepository {
       where: { id },
     })
     return gym
+  }
+
+  async findManyNearby(params: FindManyNearbyParams): Promise<Gym[]> {
+    throw new Error('Method not implemented.')
   }
 
   async create(data: Prisma.GymUncheckedCreateInput): Promise<Gym> {
