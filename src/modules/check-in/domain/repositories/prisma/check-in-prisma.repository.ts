@@ -1,16 +1,48 @@
 import { prisma } from '@/core/infra/lib/prisma'
 import { CheckIn, Prisma } from '@prisma/client'
+import dayjs from 'dayjs'
 
 import { CheckInRepository } from '../check-in-repository.abstract'
 
 export class CheckInPrismaRepository implements CheckInRepository {
-  async findByUserOnDate(userId: string, date: Date): Promise<CheckIn | null> {
+  async findById(id: string): Promise<CheckIn | null> {
     const checkIn = await prisma.checkIn.findUnique({
+      where: { id },
+    })
+
+    return checkIn
+  }
+
+  async findByUserOnDate(userId: string, date: Date): Promise<CheckIn | null> {
+    const startOfTheDay = dayjs(date).startOf('date')
+    const endOfTheDay = dayjs(date).endOf('date')
+
+    const checkIn = await prisma.checkIn.findFirst({
       where: {
         user_id: userId,
+        created_at: { gte: startOfTheDay.toDate(), lte: endOfTheDay.toDate() },
       },
     })
+
     return checkIn
+  }
+
+  async findManyByUserId(userId: string, page: number): Promise<CheckIn[]> {
+    const checkIns = await prisma.checkIn.findMany({
+      where: { user_id: userId },
+      take: 20,
+      skip: (page - 1) * 20,
+    })
+
+    return checkIns
+  }
+
+  async countByUserId(userId: string): Promise<number> {
+    const count = await prisma.checkIn.count({
+      where: { user_id: userId },
+    })
+
+    return count
   }
 
   async create(data: Prisma.CheckInUncheckedCreateInput): Promise<CheckIn> {
@@ -21,25 +53,12 @@ export class CheckInPrismaRepository implements CheckInRepository {
     return user
   }
 
-  async findManyByUserId(userId: string, page: number): Promise<CheckIn[]> {
-    return await prisma.checkIn.findMany({
-      where: { user_id: userId },
-      take: 20,
-      skip: (page - 1) * 20,
+  async save(data: CheckIn): Promise<CheckIn> {
+    const checkIn = await prisma.checkIn.update({
+      where: { id: data.id },
+      data,
     })
-  }
 
-  async countByUserId(userId: string): Promise<number> {
-    return await prisma.checkIn.count({
-      where: { user_id: userId },
-    })
-  }
-
-  async save(id: string): Promise<CheckIn> {
-    throw new Error('Method not implemented.')
-  }
-
-  async findById(id: string): Promise<CheckIn | null> {
-    throw new Error('Method not implemented.')
+    return checkIn
   }
 }
