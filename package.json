@@ -9,6 +9,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
+    "test:unit": "vitest run --dir src/modules/application/services",
+    "test:e2e": "vitest run --dir src/modules/infra/controllers",
     "build": "tsup src --out-dir build",
     "start:dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
