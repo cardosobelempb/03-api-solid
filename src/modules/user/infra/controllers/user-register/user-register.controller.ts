@@ -4,7 +4,7 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 
 import { UserSchema } from '../../schemas/user.schema'
 
-export async function userRegister(
+export async function userRegisterController(
   request: FastifyRequest,
   reply: FastifyReply,
 ) {
