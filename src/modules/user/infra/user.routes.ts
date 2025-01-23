@@ -2,11 +2,12 @@ import { userRegisterController } from '@/modules/user/infra/controllers/user-re
 import { FastifyInstance } from 'fastify'
 import { userAuthenticateController } from './controllers/user-authenticate/user-authenticate.controller'
 import { userProfileController } from './controllers/user-profile/user-profile.controller'
+import { veriFyJwt } from '@/core/infra/middlewares/verify-jwt'
 
 export async function userRoutes(app: FastifyInstance) {
   app.post('/users', userRegisterController)
   app.post('/session', userAuthenticateController)
 
   /* Authentication */
-  app.get('/me', userProfileController)
+  app.get('/me', { onRequest: [veriFyJwt] }, userProfileController)
 }
