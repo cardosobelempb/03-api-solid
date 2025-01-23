@@ -6,21 +6,28 @@ import { UserSchema } from '../../schemas/user.schema'
 
 export async function userAuthenticateController(
   request: FastifyRequest,
-  reply: FastifyReply,
+  response: FastifyReply,
 ) {
   const { email, password } = UserSchema.authenticate.parse(request.body)
   try {
     const userAuthenticateService = userAuthenticateMake()
-    await userAuthenticateService.execute({
+    const { user } = await userAuthenticateService.execute({
       email,
       password,
     })
+    const access_token = await response.jwtSign(
+      {},
+      {
+        sign: {
+          sub: user.id,
+        },
+      },
+    )
+    return response.status(200).send({ access_token })
   } catch (error) {
     if (error instanceof InvalidCredentialsError) {
-      return reply.status(400).send({ message: error.message })
+      return response.status(400).send({ message: error.message })
     }
     throw error
   }
-
-  return reply.status(200).send()
 }

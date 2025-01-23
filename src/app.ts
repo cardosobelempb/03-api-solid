@@ -2,8 +2,13 @@ import fastify from 'fastify'
 import { userRoutes } from './modules/user/infra/user.routes'
 import { ZodError } from 'zod'
 import { env } from './core/infra/env'
+import fastifyJwt from '@fastify/jwt'
 
 export const app = fastify()
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+})
 
 app.register(userRoutes)
 app.setErrorHandler((error, _request, reply) => {

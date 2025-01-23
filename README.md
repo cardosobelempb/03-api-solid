@@ -17,6 +17,10 @@ GymPass style app.
 - npm install dayjs -S
 - npm install @fastify/cookie
 
+## Authentication
+
+- npm i @fastify/jwt
+
 ## Dev Dependencies
 
 - npm i typescript -D
