@@ -29,6 +29,10 @@ GymPass style app.
 - npm i @types/node -D
 - npm install @types/bcryptjs -D
 - npm i eslint @rocketseat/eslint-config -D
+- npm i tsconfig-paths -D
+- npm i vite-tsconfig-paths -D
+- npm i tsconfig-paths -D
+- npm i npm-run-all -D
 
 ## comado Typescript
 
