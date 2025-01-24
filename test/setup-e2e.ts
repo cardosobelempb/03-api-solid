@@ -3,7 +3,7 @@ import { execSync } from 'child_process'
 import { randomUUID } from 'crypto'
 import { Environment } from 'vitest/environments'
 
-import 'dotenv'
+import 'dotenv/config'
 
 function generateDataBaseURL(schema: string) {
   const envDatabaseURL = process.env.DATABASE_URL
@@ -26,6 +26,7 @@ export default <Environment>{
     const schema = randomUUID()
 
     const databaseURL = generateDataBaseURL(schema)
+    console.log(databaseURL)
 
     process.env.DATABASE_URL = databaseURL
 

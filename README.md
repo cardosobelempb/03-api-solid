@@ -54,6 +54,7 @@ GymPass style app.
 - npm i supertest -D
 - npm i @types/supertest -D
 - npm i @vitest/ui -D
+- npm i unplugin-swc -D
 
 ## scripts
 
