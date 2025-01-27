@@ -1,4 +1,4 @@
-import { prisma } from '@/core/infra/lib/prisma'
+import { prisma } from '@/shared/infra/lib/prisma'
 import { CheckIn, Prisma } from '@prisma/client'
 import dayjs from 'dayjs'
 

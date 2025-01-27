@@ -2,13 +2,26 @@ import { z } from 'zod'
 
 export namespace GymValidation {
   export const create = z.object({
-    name: z.string(),
-    email: z.string().email(),
-    password: z.string().min(6),
+    title: z.string(),
+    description: z.string().nullable(),
+    phone: z.string().nullable(),
+    latitude: z.number().refine(value => {
+      return Math.abs(value) <= 90
+    }),
+    longitude: z.number().refine(value => {
+      return Math.abs(value) <= 180
+    }),
   })
 
   export const update = z.object({
-    email: z.string().email(),
-    password: z.string().min(6),
+    title: z.string(),
+    description: z.string().nullable(),
+    phone: z.string().nullable(),
+    latitude: z.number().refine(value => {
+      return Math.abs(value) <= 90
+    }),
+    longitude: z.number().refine(value => {
+      return Math.abs(value) <= 180
+    }),
   })
 }

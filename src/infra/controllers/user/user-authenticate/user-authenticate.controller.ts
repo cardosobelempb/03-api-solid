@@ -1,5 +1,5 @@
 import { userAuthenticateMake } from '@/application/services/user/user-authenticate/user-authenticate.make'
-import { InvalidCredentialsError } from '@/core/application/errors/invalid-credentials.erro'
+import { InvalidCredentialsError } from '@/shared/application/errors/invalid-credentials.erro'
 import { UserValidation } from '@/infra/validations/user.validation'
 import { FastifyReply, FastifyRequest } from 'fastify'
 

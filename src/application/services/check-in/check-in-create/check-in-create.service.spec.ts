@@ -1,5 +1,5 @@
-import { MaxDistanceError } from '@/core/application/errors/max-distance.error'
-import { MaxNumberOfCheckInError } from '@/core/application/errors/max-number-of-check-in.erro'
+import { MaxDistanceError } from '@/shared/application/errors/max-distance.error'
+import { MaxNumberOfCheckInError } from '@/shared/application/errors/max-number-of-check-in.erro'
 import { CheckInInMenoryRepository } from '@/domain/repositories/check-in/in-memory/check-in-in-memory.repository'
 import { GymInMemoryRepoitory } from '@/domain/repositories/gym/in-memory-repository/gym-in-memory.repository'
 import { Decimal } from '@prisma/client/runtime/library'

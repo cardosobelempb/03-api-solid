@@ -1,4 +1,4 @@
-import { FindByEmailError } from '@/core/application/errors/findby-email.error'
+import { FindByEmailError } from '@/shared/application/errors/findby-email.error'
 import bcryptjs from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'
 

@@ -1,5 +1,5 @@
-import { LateCheckInValidationError } from '@/core/application/errors/late-check-in-validation.error'
-import { ResourceNotFoundError } from '@/core/application/errors/resource-not-found.erro'
+import { LateCheckInValidationError } from '@/shared/application/errors/late-check-in-validation.error'
+import { ResourceNotFoundError } from '@/shared/application/errors/resource-not-found.erro'
 import { CheckInRepository } from '@/domain/repositories/check-in/check-in-repository.abstract'
 import dayjs from 'dayjs'
 

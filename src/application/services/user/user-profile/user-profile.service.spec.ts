@@ -1,4 +1,4 @@
-import { ResourceNotFoundError } from '@/core/application/errors/resource-not-found.erro'
+import { ResourceNotFoundError } from '@/shared/application/errors/resource-not-found.erro'
 import { UserInMenoryRepository } from '@/domain/repositories/user/in-memory/user-in-memory.repository'
 import { hash } from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'

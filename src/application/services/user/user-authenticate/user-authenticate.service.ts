@@ -1,6 +1,6 @@
 import { UserRequest } from '@/application/request/user.request'
 import { UserResponse } from '@/application/response/user.response'
-import { InvalidCredentialsError } from '@/core/application/errors/invalid-credentials.erro'
+import { InvalidCredentialsError } from '@/shared/application/errors/invalid-credentials.erro'
 import { UserPrismaRepository } from '@/domain/repositories/user/prisma/user-prisma.repository'
 import bcryptjs from 'bcryptjs'
 

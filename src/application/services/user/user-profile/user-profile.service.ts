@@ -1,6 +1,6 @@
 import { UserRequest } from '@/application/request/user.request'
 import { UserResponse } from '@/application/response/user.response'
-import { ResourceNotFoundError } from '@/core/application/errors/resource-not-found.erro'
+import { ResourceNotFoundError } from '@/shared/application/errors/resource-not-found.erro'
 import { UserPrismaRepository } from '@/domain/repositories/user/prisma/user-prisma.repository'
 
 export class UserProfileService {

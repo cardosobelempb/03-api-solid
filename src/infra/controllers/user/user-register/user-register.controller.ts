@@ -1,5 +1,5 @@
 import { userRegisterMake } from '@/application/services/user/user-register/user-register.make'
-import { FindByEmailError } from '@/core/application/errors/findby-email.error'
+import { FindByEmailError } from '@/shared/application/errors/findby-email.error'
 import { UserValidation } from '@/infra/validations/user.validation'
 
 import { FastifyReply, FastifyRequest } from 'fastify'

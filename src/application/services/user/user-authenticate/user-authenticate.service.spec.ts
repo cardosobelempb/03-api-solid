@@ -1,4 +1,4 @@
-import { InvalidCredentialsError } from '@/core/application/errors/invalid-credentials.erro'
+import { InvalidCredentialsError } from '@/shared/application/errors/invalid-credentials.erro'
 import bcryptjs from 'bcryptjs'
 import { beforeEach, describe, expect, it } from 'vitest'
 

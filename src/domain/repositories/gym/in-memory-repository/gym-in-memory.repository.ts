@@ -1,4 +1,4 @@
-import { getDistanceBetweenCoordinates } from '@/core/utils/get-distance-between-coodinates'
+import { getDistanceBetweenCoordinates } from '@/shared/utils/get-distance-between-coodinates'
 import { Gym, Prisma } from '@prisma/client'
 import { Decimal } from '@prisma/client/runtime/library'
 import { randomUUID } from 'node:crypto'

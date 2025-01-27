@@ -1,7 +1,7 @@
-import { MaxDistanceError } from '@/core/application/errors/max-distance.error'
-import { MaxNumberOfCheckInError } from '@/core/application/errors/max-number-of-check-in.erro'
-import { ResourceNotFoundError } from '@/core/application/errors/resource-not-found.erro'
-import { getDistanceBetweenCoordinates } from '@/core/utils/get-distance-between-coodinates'
+import { MaxDistanceError } from '@/shared/application/errors/max-distance.error'
+import { MaxNumberOfCheckInError } from '@/shared/application/errors/max-number-of-check-in.erro'
+import { ResourceNotFoundError } from '@/shared/application/errors/resource-not-found.erro'
+import { getDistanceBetweenCoordinates } from '@/shared/utils/get-distance-between-coodinates'
 import { CheckInRepository } from '@/domain/repositories/check-in/check-in-repository.abstract'
 import { GymPrismaRepoitory } from '@/domain/repositories/gym/prisma-repository/gym-prisma.repository'
 

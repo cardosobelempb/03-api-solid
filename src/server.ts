@@ -1,5 +1,5 @@
 import { app } from './app'
-import { env } from './core/infra/env'
+import { env } from './shared/infra/env'
 
 app
   .listen({
