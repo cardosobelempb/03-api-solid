@@ -25,7 +25,7 @@ describe('CheckInValidateService', () => {
       gym_id: 'gym-01',
       user_id: 'user-01',
     })
-    const { checkIn } = await sut.excute({ checkInId: createCheckIn.id })
+    const { checkIn } = await sut.execute({ checkInId: createCheckIn.id })
 
     expect(checkIn.validated_at).toEqual(expect.any(Date))
     expect(checkiInRepository.items[0].validated_at).toEqual(expect.any(Date))
@@ -33,7 +33,7 @@ describe('CheckInValidateService', () => {
 
   it('should not be able to validate an inexistent check-in', async () => {
     await expect(() =>
-      sut.excute({ checkInId: 'fakeId' }),
+      sut.execute({ checkInId: 'fakeId' }),
     ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 
@@ -50,7 +50,7 @@ describe('CheckInValidateService', () => {
     vi.advanceTimersByTime(twentyOnMinutesInMs)
 
     await expect(() =>
-      sut.excute({ checkInId: createCheckIn.id }),
+      sut.execute({ checkInId: createCheckIn.id }),
     ).rejects.toBeInstanceOf(LateCheckInValidationError)
   })
 })

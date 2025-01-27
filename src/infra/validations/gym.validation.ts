@@ -13,6 +13,10 @@ export namespace GymValidation {
     }),
   })
 
+  export const id = z.object({
+    gymId: z.string().uuid(),
+  })
+
   export const search = z.object({
     query: z.string(),
     page: z.coerce.number().min(1).default(1),

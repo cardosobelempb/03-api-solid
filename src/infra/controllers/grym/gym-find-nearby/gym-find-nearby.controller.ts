@@ -6,7 +6,7 @@ export async function gymFindNearbyController(
   request: FastifyRequest,
   response: FastifyReply,
 ) {
-  const { latitude, longitude } = GymValidation.nearby.parse(request.body)
+  const { latitude, longitude } = GymValidation.nearby.parse(request.query)
 
   const gymNearby = gymFindNearbyMake()
 

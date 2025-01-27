@@ -9,7 +9,7 @@ import { CheckInResponse } from '../../../response/check-in.response'
 export class CheckInValidateService {
   constructor(private readonly checkInRepository: CheckInRepository) {}
 
-  async excute({
+  async execute({
     checkInId,
   }: CheckInRequest.Id): Promise<CheckInResponse.Find> {
     const checkIn = await this.checkInRepository.findById(checkInId)

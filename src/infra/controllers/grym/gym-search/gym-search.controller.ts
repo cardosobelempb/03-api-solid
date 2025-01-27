@@ -6,7 +6,7 @@ export async function gymSearchController(
   request: FastifyRequest,
   response: FastifyReply,
 ) {
-  const { query, page } = GymValidation.search.parse(request.body)
+  const { query, page } = GymValidation.search.parse(request.query)
 
   const gymSearch = gymSearchMake()
 

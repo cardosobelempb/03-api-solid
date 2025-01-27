@@ -5,6 +5,9 @@ import { checkInMetricsController } from './check-in-metrics/check-in-metrics.co
 
 export async function checkInRoutes(app: FastifyInstance) {
   app.addHook('onRequest', veriFyJwt)
-  app.post('/check-ins', checkInCreateController)
+
+  app.post('/gym/:gymId/check-ins', checkInCreateController)
+  app.patch('/check-ins/:checkInId/validate', checkInMetricsController)
+  app.get('/check-ins/history', checkInMetricsController)
   app.get('/check-ins/metrics', checkInMetricsController)
 }

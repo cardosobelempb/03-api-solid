@@ -2,7 +2,7 @@ import { CheckInPrismaRepository } from '@/domain/repositories/check-in/prisma/c
 
 import { CheckInMetricsService } from './check-in-metrics.service'
 
-export function chechInMetricsMake() {
+export function checkInMetricsMake() {
   const checkInRepository = new CheckInPrismaRepository()
   const service = new CheckInMetricsService(checkInRepository)
   return service
