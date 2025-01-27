@@ -1,7 +1,8 @@
 import { app } from '@/app'
 import { createAndAuthenicateUser } from '@/shared/utils/test/create-and-authenticate-user'
 import request from 'supertest'
-import { describe, it, beforeAll, afterAll, expect } from 'vitest'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+
 describe('GymSearchController', () => {
   beforeAll(async () => {
     await app.ready()
@@ -18,7 +19,7 @@ describe('GymSearchController', () => {
       .post('/gyms')
       .set('Authorization', `Bearer ${access_token}`)
       .send({
-        title: 'TypeScript Gym',
+        title: 'JavaScript Gym',
         description: 'Some description.',
         phone: '83999999999',
         latitude: -6.6979476,
@@ -29,7 +30,7 @@ describe('GymSearchController', () => {
       .post('/gyms')
       .set('Authorization', `Bearer ${access_token}`)
       .send({
-        title: 'JavaScript Gym',
+        title: 'TypeScript Gym',
         description: 'Some description.',
         phone: '83999999999',
         latitude: -6.6979476,
@@ -44,8 +45,10 @@ describe('GymSearchController', () => {
 
     expect(response.statusCode).toEqual(200)
     expect(response.body.gyms).toHaveLength(1)
-    expect.objectContaining({
-      title: 'JavaScript',
-    })
+    expect(response.body.gyms).toEqual([
+      expect.objectContaining({
+        title: 'JavaScript Gym',
+      }),
+    ])
   })
 })

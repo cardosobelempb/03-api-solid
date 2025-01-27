@@ -1,7 +1,8 @@
 import { app } from '@/app'
 import { createAndAuthenicateUser } from '@/shared/utils/test/create-and-authenticate-user'
 import request from 'supertest'
-import { describe, it, beforeAll, afterAll, expect } from 'vitest'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+
 describe('GymFindNearbyController', () => {
   beforeAll(async () => {
     await app.ready()

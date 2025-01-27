@@ -1,7 +1,10 @@
+import { GymRequest } from './gym.request'
+import { UserRequest } from './user.request'
+
 export namespace CheckInRequest {
   export interface Request {
-    userId: string
-    gymId: string
+    userId: UserRequest.id
+    gymId: GymRequest.Id
     userLatitude: number
     userLongitude: number
   }

@@ -10,6 +10,10 @@ export namespace UserRequest {
     password: string
   }
 
+  export interface id {
+    userId: string
+  }
+
   export interface Profile {
     userId: string
   }

@@ -11,8 +11,8 @@ export async function checkInHistoryUserController(
   const checkInHistory = checkInHistoryUserMake()
 
   const { checkIns } = await checkInHistory.execute({
-    userId: request.user.sub,
     page,
+    userId: request.user.sub,
   })
 
   return response.status(200).send({

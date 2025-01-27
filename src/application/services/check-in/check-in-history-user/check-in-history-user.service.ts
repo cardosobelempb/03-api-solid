@@ -1,9 +1,10 @@
-import { CheckInRepository } from '@/domain/repositories/check-in/check-in-repository.abstract'
+import { CheckInPrismaRepository } from '@/domain/repositories/check-in/prisma/check-in-prisma.repository'
+
 import { CheckInRequest } from '../../../request/check-in.request'
 import { CheckInResponse } from '../../../response/check-in.response'
 
 export class CheckInHistoryUserService {
-  constructor(private readonly checkInRepository: CheckInRepository) {}
+  constructor(private readonly checkInRepository: CheckInPrismaRepository) {}
 
   async execute({
     userId,
