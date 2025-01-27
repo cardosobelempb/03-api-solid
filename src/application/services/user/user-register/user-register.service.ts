@@ -1,11 +1,11 @@
 import { UserRequest } from '@/application/request/user.request'
 import { UserResponse } from '@/application/response/user.response'
 import { FindByEmailError } from '@/core/application/errors/findby-email.error'
-import { UserPrismaRepository } from '@/domain/repositories/user/prisma/user-prisma.repository'
+import { UserInMenoryRepository } from '@/domain/repositories/user/in-memory/user-in-memory.repository'
 import bcryptjs from 'bcryptjs'
 
 export class UserRegisterService {
-  constructor(private readonly userRepository: UserPrismaRepository) {}
+  constructor(private readonly userRepository: UserInMenoryRepository) {}
 
   async execute({
     name,
