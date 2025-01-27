@@ -12,7 +12,7 @@ export async function gymSearchController(
 
   const { gyms } = await gymSearch.execute({ query, page })
 
-  return response.status(201).send({
+  return response.status(200).send({
     gyms,
   })
 }
