@@ -6,7 +6,8 @@ import { gymSearchController } from './gym-search/gym-search.controller'
 
 export async function gymRoutes(app: FastifyInstance) {
   app.addHook('onRequest', veriFyJwt)
+
   app.post('/gyms', gymCreateController)
-  app.get('/gyms', gymFindNearbyController)
-  app.get('/gyms', gymSearchController)
+  app.get('/gyms/nearby', gymFindNearbyController)
+  app.get('/gyms/search', gymSearchController)
 }

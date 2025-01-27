@@ -5,7 +5,7 @@ import { GymPrismaRepoitory } from '@/domain/repositories/gym/prisma-repository/
 export class GymCreateService {
   constructor(private readonly gymRepository: GymPrismaRepoitory) {}
 
-  async excute({
+  async execute({
     title,
     description,
     phone,

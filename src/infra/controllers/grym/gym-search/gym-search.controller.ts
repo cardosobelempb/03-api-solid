@@ -1,6 +1,18 @@
+import { gymSearchMake } from '@/application/services/gym/gym-search/gym-search.make'
+import { GymValidation } from '@/infra/validations/gym.validation'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function gymSearchController(
   request: FastifyRequest,
-  reply: FastifyReply,
-) {}
+  response: FastifyReply,
+) {
+  const { query, page } = GymValidation.search.parse(request.body)
+
+  const gymSearch = gymSearchMake()
+
+  const { gyms } = await gymSearch.execute({ query, page })
+
+  return response.status(201).send({
+    gyms,
+  })
+}

@@ -11,7 +11,7 @@ export async function gymCreateController(
 
   const gymCreate = gymCreateMake()
 
-  await gymCreate.excute({
+  await gymCreate.execute({
     title,
     description,
     phone,
