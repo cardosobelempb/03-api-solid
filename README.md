@@ -20,6 +20,7 @@ GymPass style app.
 ## Authentication
 
 - npm i @fastify/jwt -S
+- npm i @fastify/cookie -S
 
 ## Dev Dependencies
 

@@ -12,7 +12,7 @@ describe('GymCreateService', () => {
     sut = new GymCreateService(gymRepository)
   })
   it('should be able to GymCreateService', async () => {
-    const { gym } = await sut.excute({
+    const { gym } = await sut.execute({
       title: 'JavaScript Gym',
       description: null,
       phone: null,

@@ -22,7 +22,25 @@ export async function userAuthenticateController(
         },
       },
     )
-    return response.status(200).send({ access_token })
+    const refresh_token = await response.jwtSign(
+      {},
+      {
+        sign: {
+          sub: user.id,
+          expiresIn: '7d',
+        },
+      },
+    )
+
+    return response
+      .setCookie('refresh_token', refresh_token, {
+        path: '/',
+        secure: true,
+        sameSite: true,
+        httpOnly: true,
+      })
+      .status(200)
+      .send({ access_token })
   } catch (error) {
     if (error instanceof InvalidCredentialsError) {
       return response.status(400).send({ message: error.message })
