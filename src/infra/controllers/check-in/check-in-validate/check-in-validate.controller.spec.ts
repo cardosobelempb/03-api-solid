@@ -34,7 +34,7 @@ describe('CheckInValidateController', () => {
     })
 
     const response = await request(app.server)
-      .patch(`/check-ins/${checkIn.id}/validate`)
+      .patch(`/api/v1/check-ins/${checkIn.id}/validate`)
       .set('Authorization', `Bearer ${access_token}`)
       .send()
 

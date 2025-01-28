@@ -16,7 +16,7 @@ describe('UserProfileController (e2e)', () => {
     const { access_token } = await createAndAuthenicateUser(app)
 
     const response = await request(app.server)
-      .get('/me')
+      .get('/api/v1/me')
       .set('Authorization', `Bearer ${access_token}`)
       .send()
 

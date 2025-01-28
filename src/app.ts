@@ -23,11 +23,16 @@ app.register(fastifyJwt, {
 
 app.register(fastifyCookie)
 
-app.register(userRoutes)
-app.register(gymRoutes)
-app.register(checkInRoutes)
+app.register(userRoutes, { prefix: '/api/v1' })
+app.register(gymRoutes, { prefix: '/api/v1' })
+app.register(checkInRoutes, { prefix: '/api/v1' })
 
 app.setErrorHandler((error, _request, reply) => {
+  if (error.code === 'FST_JWT_NO_AUTHORIZATION_IN_COOKIE') {
+    return reply
+      .status(401)
+      .send({ message: 'Invalid JWT token.', code: error.code })
+  }
   if (error instanceof ZodError) {
     return reply
       .status(400)

@@ -16,7 +16,7 @@ describe('GymSearchController', () => {
     const { access_token } = await createAndAuthenicateUser(app)
 
     await request(app.server)
-      .post('/gyms')
+      .post('/api/v1/gyms')
       .set('Authorization', `Bearer ${access_token}`)
       .send({
         title: 'JavaScript Gym',
@@ -27,7 +27,7 @@ describe('GymSearchController', () => {
       })
 
     await request(app.server)
-      .post('/gyms')
+      .post('/api/v1/gyms')
       .set('Authorization', `Bearer ${access_token}`)
       .send({
         title: 'TypeScript Gym',
@@ -38,7 +38,7 @@ describe('GymSearchController', () => {
       })
 
     const response = await request(app.server)
-      .get('/gyms/search')
+      .get('/api/v1/gyms/search')
       .query({ query: 'JavaScript' })
       .set('Authorization', `Bearer ${access_token}`)
       .send()

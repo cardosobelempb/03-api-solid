@@ -40,7 +40,7 @@ describe('CheckInHistoryController', () => {
     })
 
     const response = await request(app.server)
-      .get('/check-ins/history')
+      .get('/api/v1/check-ins/history')
       .set('Authorization', `Bearer ${access_token}`)
       .send()
 

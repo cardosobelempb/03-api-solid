@@ -16,7 +16,7 @@ describe('GymFindNearbyController', () => {
     const { access_token } = await createAndAuthenicateUser(app)
 
     await request(app.server)
-      .post('/gyms')
+      .post('/api/v1/gyms')
       .set('Authorization', `Bearer ${access_token}`)
       .send({
         title: 'TypeScript Gym',
@@ -27,7 +27,7 @@ describe('GymFindNearbyController', () => {
       })
 
     await request(app.server)
-      .post('/gyms')
+      .post('/api/v1/gyms')
       .set('Authorization', `Bearer ${access_token}`)
       .send({
         title: 'JavaScript Gym',
@@ -38,7 +38,7 @@ describe('GymFindNearbyController', () => {
       })
 
     const response = await request(app.server)
-      .get('/gyms/nearby')
+      .get('/api/v1/gyms/nearby')
       .query({ latitude: -6.6979476, longitude: -35.5407645 })
       .set('Authorization', `Bearer ${access_token}`)
       .send()

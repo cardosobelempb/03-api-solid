@@ -15,7 +15,7 @@ describe('GymCreateController', () => {
     const { access_token } = await createAndAuthenicateUser(app)
 
     const response = await request(app.server)
-      .post('/gyms')
+      .post('/api/v1/gyms')
       .set('Authorization', `Bearer ${access_token}`)
       .send({
         title: 'JavaScript Gym',

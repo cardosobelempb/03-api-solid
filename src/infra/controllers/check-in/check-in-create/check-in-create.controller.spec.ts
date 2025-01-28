@@ -25,7 +25,7 @@ describe('CheckInCreateController', () => {
     })
 
     const response = await request(app.server)
-      .post(`/gym/${gym.id}/check-ins`)
+      .post(`/api/v1/gym/${gym.id}/check-ins`)
       .set('Authorization', `Bearer ${access_token}`)
       .send({
         gymId: gym.id,

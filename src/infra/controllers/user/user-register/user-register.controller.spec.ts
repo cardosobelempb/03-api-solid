@@ -12,7 +12,7 @@ describe('UserRegisterController (e2e)', () => {
   })
 
   it('should be able to register', async () => {
-    const response = await request(app.server).post('/users').send({
+    const response = await request(app.server).post('/api/v1/users').send({
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',

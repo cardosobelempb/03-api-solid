@@ -40,7 +40,7 @@ describe('CheckInMetricsController', () => {
     })
 
     const response = await request(app.server)
-      .get('/check-ins/metrics')
+      .get('/api/v1/check-ins/metrics')
       .set('Authorization', `Bearer ${access_token}`)
       .send()
 
