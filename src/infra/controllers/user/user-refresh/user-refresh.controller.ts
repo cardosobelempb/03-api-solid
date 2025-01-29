@@ -6,7 +6,7 @@ export async function userRefreshController(
 ) {
   await request.jwtVerify({ onlyCookie: true })
   const access_token = await response.jwtSign(
-    {},
+    { role: request.user.role },
     {
       sign: {
         sub: request.user.sub,
@@ -14,7 +14,7 @@ export async function userRefreshController(
     },
   )
   const refresh_token = await response.jwtSign(
-    {},
+    { role: request.user.role },
     {
       sign: {
         sub: request.user.sub,

@@ -15,7 +15,7 @@ export async function userAuthenticateController(
       password,
     })
     const access_token = await response.jwtSign(
-      {},
+      { role: user.role },
       {
         sign: {
           sub: user.id,
@@ -23,7 +23,7 @@ export async function userAuthenticateController(
       },
     )
     const refresh_token = await response.jwtSign(
-      {},
+      { role: user.role },
       {
         sign: {
           sub: user.id,
