@@ -1,0 +1,14 @@
+name: Run Unit Test
+on: [push]
+jobs:
+  run-unit-tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - users: actions/chechout@v3
+      - users: actions/setp-none@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test
