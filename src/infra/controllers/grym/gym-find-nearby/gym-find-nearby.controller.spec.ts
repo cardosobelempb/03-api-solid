@@ -13,7 +13,7 @@ describe('GymFindNearbyController', () => {
   })
 
   it('should be able to list nearby a gym', async () => {
-    const { access_token } = await createAndAuthenicateUser(app)
+    const { access_token } = await createAndAuthenicateUser(app, true)
 
     await request(app.server)
       .post('/api/v1/gyms')
